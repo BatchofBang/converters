@@ -16,6 +16,15 @@
 			margin-top: 10px;
 			max-width: 500px;
 		}
+		.download-btn {
+			margin-top: 20px;
+			padding: 10px;
+			background-color: #007bff;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
 	</style>
 </head>
 <body>
@@ -34,6 +43,7 @@
 		</select>
 		<button id="convert-btn">Convert</button>
 		<img id="output-image">
+		<a id="download-link" download><button class="download-btn">Download</button></a>
 	</div>
 
 	<script>
@@ -43,6 +53,7 @@
 		const outputFormat = document.getElementById('output-format');
 		const convertBtn = document.getElementById('convert-btn');
 		const outputImage = document.getElementById('output-image');
+		const downloadLink = document.getElementById('download-link');
 
 		convertBtn.addEventListener('click', () => {
 			const file = inputFile.files[0];
@@ -64,6 +75,7 @@
 
 					const dataURL = canvas.toDataURL(`image/${outputFormat.value}`);
 					outputImage.src = dataURL;
+					downloadLink.href = dataURL;
 				};
 				img.src = reader.result;
 			};
