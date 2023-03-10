@@ -27,7 +27,11 @@ form {
   margin-bottom: 20px;
 }
 
-input[type=file] {
+label {
+  margin-bottom: 10px;
+}
+
+input[type=file], input[type=number], select {
   margin-bottom: 10px;
 }
 
