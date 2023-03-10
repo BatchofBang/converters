@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Format Changer</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Image Format Changer</h1>
+    <form id="image-form" action="convert.php" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="image">Select an image:</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
+      </div>
+      <div class="form-group">
+        <label for="format">Select a format:</label>
+        <select id="format" name="format" required>
+          <option value="">Choose a format</option>
+          <option value="jpeg">JPEG</option>
+          <option value="png">PNG</option>
+          <option value="gif">GIF</option>
+        </select>
+      </div>
+      <button type="submit">Convert</button>
+    </form>
+  </div>
+</body>
+</html>
