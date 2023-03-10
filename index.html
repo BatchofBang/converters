@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Image Converter</title>
+    <title>Image Size and Format Changer</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
     <header>
-      <h1>Image Converter</h1>
+      <h1>Image Size and Format Changer</h1>
     </header>
     <main>
       <form>
+        <label for="input-file">Upload Image:</label>
         <input type="file" id="input-file">
+        <label for="output-width">Output Width (px):</label>
+        <input type="number" id="output-width" value="300">
+        <label for="output-format">Output Format:</label>
+        <select id="output-format">
+          <option value="jpeg">JPEG</option>
+          <option value="png">PNG</option>
+          <option value="webp">WebP</option>
+        </select>
         <button type="submit" id="convert-btn">Convert</button>
       </form>
       <img id="output-image" src="" alt="">
     </main>
     <footer>
-      <p>&copy; 2023 Image Converter</p>
+      <p>&copy; 2023 Image Size and Format Changer</p>
     </footer>
     <script src="script.js"></script>
   </body>
