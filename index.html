@@ -1,39 +1,58 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Image Converter</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-</head>
-<body>
-	<div class="container">
-		<h1>Image Converter</h1>
-		<div class="input-container">
-			<label for="input-file"><strong>Select an image file:</strong></label>
-			<input type="file" id="input-file">
-		</div>
-		<div class="input-container">
-			<label for="new-width"><strong>New width:</strong></label>
-			<input type="number" id="new-width">
-		</div>
-		<div class="input-container">
-			<label for="new-height"><strong>New height:</strong></label>
-			<input type="number" id="new-height">
-		</div>
-		<div class="input-container">
-			<label for="output-format"><strong>Output format:</strong></label>
-			<select id="output-format">
-				<option value="jpeg">JPEG</option>
-				<option value="png">PNG</option>
-				<option value="webp">WebP</option>
-			</select>
-		</div>
-		<button id="convert-btn">Convert</button>
-		<div id="output-container">
-			<img id="output-image">
-			<a id="download-link" download><button class="download-btn">Download</button></a>
-		</div>
-	</div>
+  <head>
+    <meta charset="UTF-8">
+    <title>Image Converter</title>
+  </head>
+  <body>
+    <h1>Image Converter</h1>
+    <p>Select an image file to convert:</p>
+    <input type="file" id="fileInput">
+    <button onclick="convertToPng()">Convert to PNG</button>
+    <button onclick="convertToJpg()">Convert to JPG</button>
+    <br>
+    <p id="output"></p>
 
-	<script src="script.js"></script>
-</body>
+    <script>
+      function convertToPng() {
+        const fileInput = document.getElementById('fileInput');
+        const file = fileInput.files[0];
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.width;
+          canvas.height = img.height;
+
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+
+          const pngData = canvas.toDataURL('image/png');
+          const output = document.getElementById('output');
+          output.innerHTML = `<img src="${pngData}" />`;
+        };
+      }
+
+      function convertToJpg() {
+        const fileInput = document.getElementById('fileInput');
+        const file = fileInput.files[0];
+        const img = document.createElement('img');
+        img.src = URL.createObjectURL(file);
+
+        img.onload = function() {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.width;
+          canvas.height = img.height;
+
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+
+          const jpgData = canvas.toDataURL('image/jpeg', 1.0);
+          const output = document.getElementById('output');
+          output.innerHTML = `<img src="${jpgData}" />`;
+        };
+      }
+    </script>
+  </body>
 </html>
